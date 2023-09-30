@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./styles";
 import { Header } from "../../components/Header";
+import { Footer } from "../../components/Footer";
 
 interface Movie {
   adult: boolean;
@@ -57,6 +58,7 @@ export const Dashboard = () => {
           </ul>
         </main>
       </Container>
+      <Footer />
     </>
   );
 };

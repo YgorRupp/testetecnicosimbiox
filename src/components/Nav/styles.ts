@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerNav = styled.nav`
-  max-width: 1280px;
+  max-width: 1296px;
   height: 70px;
   margin-inline: auto;
 
