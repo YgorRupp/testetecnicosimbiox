@@ -1,11 +1,10 @@
+import { Nav } from "../Nav";
+import { ContainerHeader } from "./styles";
 
 export const Header = () => {
-
-    return (
-        <header >
-
-        </header>
-    )
-
-
-}
+  return (
+    <ContainerHeader>
+      <Nav />
+    </ContainerHeader>
+  );
+};
