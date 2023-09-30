@@ -6,7 +6,7 @@ export const RoutesMain = () => {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="/detailmovie" element={<DetailMovie />} />
+      <Route path="/card/:id" element={<DetailMovie />} />
     </Routes>
   );
 };

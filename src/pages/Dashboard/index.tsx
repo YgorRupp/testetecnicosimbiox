@@ -3,8 +3,9 @@ import { api } from "../../services/api";
 import { Container } from "./styles";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { Card } from "../../components/Card";
 
-interface Movie {
+export interface Movie {
   adult: boolean;
   backdrop_path: string;
   id: number;
@@ -14,7 +15,7 @@ interface Movie {
   overview: string;
   poster_path: string;
   media_type: string;
-  genre_ids: [];
+  genre_ids: number[];
   popularity: number;
   release_date: string;
   video: boolean;
@@ -31,12 +32,6 @@ export const Dashboard = () => {
         const response = await api.get("/teste");
         setMovies(response.data.results);
         console.log(response.data.results);
-        console.log(
-          movies.map((movie) => {
-            return <h2>{movie.id}</h2>;
-          })
-        );
-        console.log();
       } catch (err) {
         console.log(err);
       }
@@ -52,13 +47,13 @@ export const Dashboard = () => {
           <ul>
             {Array.isArray(movies)
               ? movies.map((movie) => {
-                  return <li key={movie.id}>{movie.poster_path}</li>;
+                  return <Card key={movie.id} movie={movie} />;
                 })
               : null}
           </ul>
         </main>
+        <Footer />
       </Container>
-      <Footer />
     </>
   );
 };
