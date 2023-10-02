@@ -1,10 +1,14 @@
 import { Nav } from "../Nav";
 import { ContainerHeader } from "./styles";
 
-export const Header = () => {
+interface HeaderProps {
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const Header = ({  handleInputChange }: HeaderProps) => {
   return (
     <ContainerHeader>
-      <Nav />
+      <Nav handleInputChange={handleInputChange} />
     </ContainerHeader>
   );
 };

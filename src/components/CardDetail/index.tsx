@@ -5,7 +5,6 @@ interface CardDetailProps {
   movie: MovieDetails;
 }
 export const CardDetail = ({ movie }: CardDetailProps) => {
-  console.log(movie.title);
   return (
     <ContainerCard>
       <img

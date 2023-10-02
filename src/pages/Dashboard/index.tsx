@@ -25,12 +25,29 @@ export interface Movie {
 
 export const Dashboard = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [value, setValue] = useState("");
+  const [searchMovie, setSearchMovie] = useState<Movie>();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const { value } = e.target;
+    setValue(value);
+
+    if (!value) {
+      return;
+    }
+
+    console.log(e.target.value);
+  };
+
+  console.log(value);
 
   useEffect(() => {
     async function responseData() {
       try {
-        const response = await api.get("/teste");
-        setMovies(response.data.results);
+        const response = await api.get(`/teste?${value}`);
+        setSearchMovie(response.data.results);
         console.log(response.data.results);
       } catch (err) {
         console.log(err);
@@ -39,15 +56,50 @@ export const Dashboard = () => {
     responseData();
   }, []);
 
+  useEffect(() => {
+    async function responseData() {
+      try {
+        const response = await api.get(`/teste/${currentPage}`);
+        setMovies(response.data.results);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    responseData();
+  }, [currentPage]);
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
+
+  console.log(searchMovie);
+
   return (
     <>
       <Container>
-        <Header />
+        <Header handleInputChange={handleInputChange} />
+        <div className="paginationButton">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Anterior
+          </button>
+          <button onClick={() => handlePageChange(currentPage + 1)}>
+            Proximo
+          </button>
+        </div>
         <main>
           <ul>
             {Array.isArray(movies)
               ? movies.map((movie) => {
-                  return <Card key={movie.id} movie={movie} />;
+                  return (
+                    <Card
+                      key={movie.id}
+                      movie={movie}
+                      searchMovie={searchMovie}
+                    />
+                  );
                 })
               : null}
           </ul>
