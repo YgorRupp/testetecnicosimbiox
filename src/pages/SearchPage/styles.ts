@@ -8,15 +8,31 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: center;
 
-    max-height: calc(100vh - 110px);
+    max-height: calc(100vh - 130px);
   }
 
+  .searchResults {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding-top: 20px;
+  }
   .searchResults p {
     color: white;
+    font-size: 2rem;
+    margin-left: 10px;
   }
-  .searchResults link {
+
+  .searchResults a {
+    text-decoration: none;
     color: white;
+    background-color: #999;
+
+    padding: 10px 20px;
+    margin-right: 10px;
   }
+
   ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -38,36 +54,15 @@ export const Container = styled.div`
     border-radius: 5px;
   }
 
-  .paginationButton {
-    margin-top: 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-
-    height: 20px;
+  .containerNotFound {
   }
 
-  .paginationButton button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #999;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .paginationButton button:hover {
-    background-color: #ccc;
-  }
-
-  .paginationButton p {
+  .searchNotFound {
+    width: 100%;
     color: white;
+    overflow: hidden;
   }
+
   @media (min-width: 1200px) {
     ul {
       overflow-x: hidden;

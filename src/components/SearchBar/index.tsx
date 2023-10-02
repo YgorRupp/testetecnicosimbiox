@@ -2,34 +2,35 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { ContainerSearchBar } from "./styles";
+import { useNavigate } from "react-router-dom";
 
-interface SearchBarProps {
-  onSearch: (text: string) => void;
-}
-
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar = () => {
   const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
   };
 
-  const handleSearch = () => {
-    onSearch(searchText);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate(`/search?s=${searchText}`);
   };
 
   return (
     <ContainerSearchBar>
       <div>
-        <input
-          type="text"
-          placeholder="Digite sua pesquisa..."
-          value={searchText}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleSearch}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Digite sua pesquisa..."
+            value={searchText}
+            onChange={handleInputChange}
+          />
+          <button>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+        </form>
       </div>
     </ContainerSearchBar>
   );

@@ -26,17 +26,12 @@ export interface Movie {
 export const Dashboard = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchResults, setSearchResults] = useState<Movie[]>([]);
   const [offset, setOffset] = useState(0);
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmYzZjIxMWZlODBiOTBhNDEyY2I1NzA0ZjJiOWRjMSIsInN1YiI6IjY1MTk0MjEwOTY3Y2M3MzQyNDY3MjFjOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hKSLdSG3y8cC7WAC6aJWxsqW_XrW5S91z-3XNHEokhg";
 
   useEffect(() => {
     async function responseData() {
       try {
         const response = await api.get(`/movies/${currentPage}`);
-        // const movies = response.data
-        // movies.length += 5
         setMovies(response.data.results);
       } catch (err) {
         console.log(err);
@@ -44,26 +39,6 @@ export const Dashboard = () => {
     }
     responseData();
   }, [currentPage]);
-
-  // const handlePageChange = (newPage: number) => {
-  //   setCurrentPage(newPage);
-  // };
-
-  const searchMovies = async (text: string) => {
-    try {
-      const response = await api.get(
-        `https://api.themoviedb.org/3/search/movie?query=${text}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setSearchResults(response.data.results);
-    } catch (error) {
-      console.error("Erro ao buscar filmes:", error);
-    }
-  };
 
   const nextPage = () => {
     if (offset < 15) {
@@ -90,12 +65,10 @@ export const Dashboard = () => {
     }
   };
 
-  console.log(searchResults);
-
   return (
     <>
       <Container>
-        <Header onSearch={searchMovies} />
+        <Header />
         <div className="paginationButton">
           <button
             onClick={() => previousPage()}
@@ -109,15 +82,8 @@ export const Dashboard = () => {
         <main>
           <ul>
             {Array.isArray(movies)
-              ? movies.slice(offset, offset + 5).map((movie, index) => {
-                  return (
-                    <Card
-                      key={movie.id}
-                      movie={movie}
-                      searchResults={searchResults}
-                      index={index}
-                    />
-                  );
+              ? movies.slice(offset, offset + 5).map((movie) => {
+                  return <Card key={movie.id} movie={movie} />;
                 })
               : null}
           </ul>

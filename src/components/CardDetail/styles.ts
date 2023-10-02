@@ -16,7 +16,7 @@ export const ContainerCard = styled.div`
   .containerImage img {
     width: 100%;
     height: 350px;
-    object-fit: scale-down; /* Esta propriedade faz a imagem preencher o contêiner sem distorção */
+    object-fit: scale-down; 
   }
   .containerTitle {
     width: 100%;
