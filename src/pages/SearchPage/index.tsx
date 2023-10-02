@@ -26,9 +26,7 @@ export const SearchPage = () => {
   useEffect(() => {
     const searchMovies = async () => {
       try {
-        const response = await api.get(
-          `https://api.themoviedb.org/3/search/movie?query=${params.s}`
-        );
+        const response = await api.get(`/movies${params.s}`);
         setMoviesSearch(response.data.results);
       } catch (error) {
         console.error("Erro ao buscar filmes:", error);
