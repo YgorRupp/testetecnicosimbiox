@@ -85,6 +85,7 @@ export const Dashboard = () => {
           >
             Anterior
           </button>
+          <p>{currentPage}</p>
           <button onClick={() => handlePageChange(currentPage + 1)}>
             Proximo
           </button>

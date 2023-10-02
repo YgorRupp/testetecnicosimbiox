@@ -41,6 +41,7 @@ export const ContainerNav = styled.nav`
       color: red;
       font-size: 2rem;
       font-weight: 600;
+      cursor: pointer;
     }
     div input {
       height: 30px;
