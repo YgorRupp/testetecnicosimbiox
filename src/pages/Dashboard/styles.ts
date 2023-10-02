@@ -61,6 +61,11 @@ export const Container = styled.div`
   .paginationButton p {
     color: white;
   }
+  @media (min-width: 1200px) {
+    ul {
+      overflow-x: hidden;
+    }
+  }
   /* @media (min-width: 768px) {
     overflow-x: auto;
   } */

@@ -27,6 +27,7 @@ export const Dashboard = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  const [offset, setOffset] = useState(0);
   const token =
     "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMmYzZjIxMWZlODBiOTBhNDEyY2I1NzA0ZjJiOWRjMSIsInN1YiI6IjY1MTk0MjEwOTY3Y2M3MzQyNDY3MjFjOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hKSLdSG3y8cC7WAC6aJWxsqW_XrW5S91z-3XNHEokhg";
 
@@ -34,6 +35,8 @@ export const Dashboard = () => {
     async function responseData() {
       try {
         const response = await api.get(`/movies/${currentPage}`);
+        // const movies = response.data
+        // movies.length += 5
         setMovies(response.data.results);
       } catch (err) {
         console.log(err);
@@ -42,9 +45,9 @@ export const Dashboard = () => {
     responseData();
   }, [currentPage]);
 
-  const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
-  };
+  // const handlePageChange = (newPage: number) => {
+  //   setCurrentPage(newPage);
+  // };
 
   const searchMovies = async (text: string) => {
     try {
@@ -62,6 +65,31 @@ export const Dashboard = () => {
     }
   };
 
+  const nextPage = () => {
+    if (offset < 15) {
+      setOffset(offset + 5);
+    } else {
+      setOffset(0);
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const previousPage = () => {
+    if (offset > 0) {
+      setOffset(offset - 5);
+    } else {
+      setOffset(15);
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const currentPageCount = () => {
+    if (currentPage === 1) {
+      return 1 + offset / 5;
+    } else {
+      return 1 + (currentPage - 1) * 4 + offset / 5;
+    }
+  };
+
   console.log(searchResults);
 
   return (
@@ -70,20 +98,18 @@ export const Dashboard = () => {
         <Header onSearch={searchMovies} />
         <div className="paginationButton">
           <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
+            onClick={() => previousPage()}
+            disabled={currentPage === 1 && offset === 0}
           >
             Anterior
           </button>
-          <p>{currentPage}</p>
-          <button onClick={() => handlePageChange(currentPage + 1)}>
-            Proximo
-          </button>
+          <p>{currentPageCount()}</p>
+          <button onClick={() => nextPage()}>Proximo</button>
         </div>
         <main>
           <ul>
             {Array.isArray(movies)
-              ? movies.map((movie, index) => {
+              ? movies.slice(offset, offset + 5).map((movie, index) => {
                   return (
                     <Card
                       key={movie.id}
