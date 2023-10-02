@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { Container } from "./styles";
-import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { CardDetail } from "../../components/CardDetail";
+import { HeaderDetail } from "../../components/HeaderDetail";
 
 export interface MovieDetails {
   adult: boolean;
@@ -60,10 +60,8 @@ export const DetailMovie = () => {
   useEffect(() => {
     async function responseData() {
       try {
-        const response = await api.get(`/teste/${idNumber}`);
+        const response = await api.get(`/movie/${idNumber}`);
         setCardDetails(response.data);
-        console.log(response.data);
-        console.log(response.data.title);
       } catch (err) {
         console.log(err);
       }
@@ -71,10 +69,9 @@ export const DetailMovie = () => {
     responseData();
   }, [idNumber]);
 
-  console.log(cardDetails);
   return (
     <Container>
-      <Header />
+      <HeaderDetail />
       <div>
         {cardDetails ? <CardDetail key={1} movie={cardDetails} /> : null}
       </div>

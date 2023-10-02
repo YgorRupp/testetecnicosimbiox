@@ -18,6 +18,8 @@ export default createGlobalStyle`
     body {
 	    line-height: 1;
         font-family: 'Poppins', sans-serif;
+        background-color: black;
+        min-height: 100vh;
     }
 
 `;

@@ -1,7 +1,10 @@
-
 import { ContainerNav } from "./styles";
 
-export const Nav = () => {
+interface navProps {
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const Nav = ({ handleInputChange }: navProps) => {
   return (
     <ContainerNav>
       <p>SimbioMovies</p>
@@ -9,7 +12,11 @@ export const Nav = () => {
         <div></div>
       </div>
       <div>
-        <input type="text" placeholder="Busque pelo seu filme" />
+        <input
+          type="text"
+          placeholder="Busque pelo seu filme"
+          onChange={handleInputChange}
+        />
       </div>
     </ContainerNav>
   );
