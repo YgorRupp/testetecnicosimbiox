@@ -4,42 +4,44 @@ import { useNavigate } from "react-router-dom";
 
 interface CardProps {
   movie: Movie;
-  searchMovie?: Movie;
+  searchResults: Movie[];
+  index: number;
 }
-export const Card = ({ movie, searchMovie }: CardProps) => {
+
+export const Card = ({ movie, searchResults, index }: CardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`/card/${movie.id}`);
   };
-
-  console.log(searchMovie);
-
+  console.log(searchResults);
   return (
     <ContainerLi onClick={handleClick}>
       <img
         src={`https://image.tmdb.org/t/p/original${
-          searchMovie && searchMovie.poster_path
-            ? searchMovie.poster_path
+          searchResults.length && searchResults[index].poster_path
+            ? searchResults[index].poster_path
             : movie.poster_path
         }`}
         alt="Logo TMDb"
       ></img>
       <div className="cardContent">
         <p>
-          {searchMovie && searchMovie.title ? searchMovie.title : movie.title}
+          {searchResults.length && searchResults[index].title
+            ? searchResults[index].title
+            : movie.title}
         </p>
         <span>
-          {searchMovie && searchMovie.overview
-            ? searchMovie.overview
+          {searchResults.length && searchResults[index].overview
+            ? searchResults[index].overview
             : movie.overview}
         </span>
         <div className="containerVote">
           <p>Nota dos usuario</p>
           <div className="containerCircle">
             <h5>
-              {searchMovie && searchMovie.vote_average
-                ? searchMovie.vote_average
+              {searchResults.length && searchResults[index].vote_average
+                ? searchResults[index].vote_average
                 : movie.vote_average}
             </h5>
           </div>

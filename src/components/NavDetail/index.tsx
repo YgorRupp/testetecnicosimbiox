@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ContainerNav } from "./styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 export const NavDetail = () => {
   const navigate = useNavigate();
@@ -11,10 +13,9 @@ export const NavDetail = () => {
   return (
     <ContainerNav>
       <p onClick={handleClick}>SimbioMovies</p>
-      <div>
-        <div></div>
-      </div>
-      <div></div>
+      <button onClick={handleClick}>
+        <FontAwesomeIcon icon={faHouse} />
+      </button>
     </ContainerNav>
   );
 };

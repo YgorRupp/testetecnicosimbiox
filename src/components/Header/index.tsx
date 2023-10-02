@@ -2,13 +2,13 @@ import { Nav } from "../Nav";
 import { ContainerHeader } from "./styles";
 
 interface HeaderProps {
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSearch: (text: string) => Promise<void>;
 }
 
-export const Header = ({  handleInputChange }: HeaderProps) => {
+export const Header = ({ onSearch }: HeaderProps) => {
   return (
     <ContainerHeader>
-      <Nav handleInputChange={handleInputChange} />
+      <Nav onSearch={onSearch}/>
     </ContainerHeader>
   );
 };
