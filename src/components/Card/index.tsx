@@ -26,15 +26,24 @@ export const Card = ({ movie, searchMovie }: CardProps) => {
         alt="Logo TMDb"
       ></img>
       <div className="cardContent">
-        <h1>
+        <p>
           {searchMovie && searchMovie.title ? searchMovie.title : movie.title}
-        </h1>
-        <h1>
-          {searchMovie && searchMovie.title ? searchMovie.title : movie.title}
-        </h1>
-        <h1>
-          {searchMovie && searchMovie.title ? searchMovie.title : movie.title}
-        </h1>
+        </p>
+        <span>
+          {searchMovie && searchMovie.overview
+            ? searchMovie.overview
+            : movie.overview}
+        </span>
+        <div className="containerVote">
+          <p>Nota dos usuario</p>
+          <div className="containerCircle">
+            <h5>
+              {searchMovie && searchMovie.vote_average
+                ? searchMovie.vote_average
+                : movie.vote_average}
+            </h5>
+          </div>
+        </div>
       </div>
     </ContainerLi>
   );

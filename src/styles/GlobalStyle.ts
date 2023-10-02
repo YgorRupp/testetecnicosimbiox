@@ -7,6 +7,7 @@ export default createGlobalStyle`
         --color-white: #ffffff;
         --color-gray-100: #23252b;
         --color-gray-200: #495057;
+        --color-gray-300: #dadada;
 
     }
 

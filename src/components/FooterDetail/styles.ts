@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerFooter = styled.footer`
+export const ContainerFooterDetail = styled.footer`
   background-color: var(--color-gray-100);
 
   position: absolute;
@@ -10,7 +10,7 @@ export const ContainerFooter = styled.footer`
 
   div {
     max-width: 1296px;
-    height: 70px;
+    height: fit-content;
     margin-inline: auto;
 
     display: flex;
@@ -18,6 +18,8 @@ export const ContainerFooter = styled.footer`
     align-items: center;
 
     padding-left: 16px;
+
+    overflow: hidden;
   }
 
   div p {

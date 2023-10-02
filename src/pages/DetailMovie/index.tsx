@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { Container } from "./styles";
-import { Footer } from "../../components/Footer";
 import { CardDetail } from "../../components/CardDetail";
 import { HeaderDetail } from "../../components/HeaderDetail";
+import { FooterDetail } from "../../components/FooterDetail";
 
 export interface MovieDetails {
   adult: boolean;
@@ -72,10 +72,10 @@ export const DetailMovie = () => {
   return (
     <Container>
       <HeaderDetail />
-      <div>
+      <div className="containerCardDetail">
         {cardDetails ? <CardDetail key={1} movie={cardDetails} /> : null}
       </div>
-      <Footer />
+      <FooterDetail />
     </Container>
   );
 };

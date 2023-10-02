@@ -9,8 +9,6 @@ export const Container = styled.div`
     justify-content: center;
 
     max-height: calc(100vh - 110px);
-
-    overflow-y: auto;
   }
   ul {
     display: grid;
@@ -23,6 +21,14 @@ export const Container = styled.div`
     max-height: 100vh;
 
     overflow-x: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  ul::-webkit-scrollbar {
+    width: 10px;
+  }
+  ul::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
   }
 
   .paginationButton {
@@ -51,4 +57,11 @@ export const Container = styled.div`
   .paginationButton button:hover {
     background-color: #ccc;
   }
+
+  .paginationButton p {
+    color: white;
+  }
+  /* @media (min-width: 768px) {
+    overflow-x: auto;
+  } */
 `;
