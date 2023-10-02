@@ -1,15 +1,11 @@
 import SearchBar from "../SearchBar";
 import { ContainerNav } from "./styles";
 
-interface NavProps {
-  onSearch: (text: string) => Promise<void>;
-}
-
-export const Nav = ({ onSearch }: NavProps) => {
+export const Nav = () => {
   return (
     <ContainerNav>
       <p>SimbioMovies</p>
-      <SearchBar onSearch={onSearch} />
+      <SearchBar />
     </ContainerNav>
   );
 };
