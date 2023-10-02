@@ -14,26 +14,12 @@ export const ContainerNav = styled.nav`
     font-size: 1rem;
     font-weight: 600;
   }
-  div input {
-    height: 25px;
-    border-radius: 4px;
+
+  button {
+    background: none;
     border: none;
-  }
-
-  div input::placeholder {
-    padding-left: 5px;
-    color: var(--color-black);
-  }
-
-  div {
-    display: flex;
-    gap: 32px;
-  }
-
-  div span {
-    font-size: 18px;
-    color: #ffffff;
-    padding-block: 16px;
+    color: red;
+    font-size: 24px;
   }
 
   @media (min-width: 768px) {
@@ -42,11 +28,6 @@ export const ContainerNav = styled.nav`
       font-size: 2rem;
       font-weight: 600;
       cursor: pointer;
-    }
-    div input {
-      height: 30px;
-      border-radius: 4px;
-      border: none;
     }
   }
 `;
