@@ -1,14 +1,10 @@
 import { Nav } from "../Nav";
 import { ContainerHeader } from "./styles";
 
-interface HeaderProps {
-  onSearch: (text: string) => Promise<void>;
-}
-
-export const Header = ({ onSearch }: HeaderProps) => {
+export const Header = () => {
   return (
     <ContainerHeader>
-      <Nav onSearch={onSearch}/>
+      <Nav />
     </ContainerHeader>
   );
 };

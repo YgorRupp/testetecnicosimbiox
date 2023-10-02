@@ -66,15 +66,15 @@ export const ContainerLi = styled.li`
     -webkit-box-orient: vertical;
   }
   .containerCircle {
-    width: 50px; /* Tamanho do círculo */
+    width: 50px; 
     height: 50px;
-    background-color: #007bff; /* Cor de fundo do círculo */
-    border-radius: 50%; /* Faz com que seja um círculo */
+    background-color: #007bff; 
+    border-radius: 50%; 
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff; /* Cor do texto dentro do círculo */
-    font-size: 18px; /* Tamanho da fonte do texto */
+    color: #fff; 
+    font-size: 18px; 
   }
 
   .containerVote {
