@@ -1,17 +1,6 @@
 import styled from "styled-components";
 
 export const ContainerLi = styled.li`
-  /* width: 300px;
-  height: 300px;
-  background-color: var(--color-gray-100);
-  color: var(--color-black);
-
-  margin: 10px;
-
-  list-style: none;
-
-  cursor: pointer; */
-
   display: flex;
   gap: 10px;
   cursor: pointer;
@@ -39,21 +28,6 @@ export const ContainerLi = styled.li`
   img:hover {
     transform: scale(1.1);
   }
-
-  /* div {
-    position: absolute;
-
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    height: 100%;
-  } */
-
-  /* :hover .cardContent {
-    opacity: 1;
-  } */
 
   .cardContent {
     display: flex;
