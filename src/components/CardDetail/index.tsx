@@ -20,7 +20,7 @@ export const CardDetail = ({ movie }: CardDetailProps) => {
       <div className="container">
         <p>Avaliação dos usuários: {movie.vote_average.toFixed(1)}</p>
         <p>Data de lançamento: {movie.release_date}</p>
-        <p>Duração: {movie.runtime} minutos</p>
+        <p className="runtime">Duração: {movie.runtime} minutos</p>
       </div>
     </ContainerCard>
   );

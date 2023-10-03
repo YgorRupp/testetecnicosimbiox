@@ -25,8 +25,9 @@ export interface Movie {
 
 export const Dashboard = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [offset, setOffset] = useState<number>(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function responseData() {
@@ -35,6 +36,8 @@ export const Dashboard = () => {
         setMovies(response.data.results);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     }
     responseData();
@@ -81,11 +84,13 @@ export const Dashboard = () => {
         </div>
         <main>
           <ul>
-            {Array.isArray(movies)
-              ? movies.slice(offset, offset + 5).map((movie) => {
-                  return <Card key={movie.id} movie={movie} />;
-                })
-              : null}
+            {loading ? (
+              <p>Carregando os cards...</p>
+            ) : Array.isArray(movies) ? (
+              movies
+                .slice(offset, offset + 5)
+                .map((movie) => <Card key={movie.id} movie={movie} />)
+            ) : null}
           </ul>
         </main>
         <Footer />

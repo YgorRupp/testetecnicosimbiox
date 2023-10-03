@@ -56,6 +56,7 @@ export const DetailMovie = () => {
   const idNumber = id ? parseInt(id, 10) : 0;
 
   const [cardDetails, setCardDetails] = useState<MovieDetails | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function responseData() {
@@ -64,6 +65,8 @@ export const DetailMovie = () => {
         setCardDetails(response.data);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     }
     responseData();
@@ -73,7 +76,11 @@ export const DetailMovie = () => {
     <Container>
       <HeaderDetail />
       <div className="containerCardDetail">
-        {cardDetails ? <CardDetail key={1} movie={cardDetails} /> : null}
+        {loading ? (
+          <p>Carregando os cards...</p>
+        ) : cardDetails ? (
+          <CardDetail key={1} movie={cardDetails} />
+        ) : null}
       </div>
       <FooterDetail />
     </Container>

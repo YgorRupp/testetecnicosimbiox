@@ -2,16 +2,20 @@ import styled from "styled-components";
 
 export const ContainerFooterDetail = styled.footer`
   background-color: var(--color-gray-100);
-
+  /* 
   position: absolute;
-  bottom: 0;
+  bottom: 0; */
   width: 100%;
   height: 70px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 
   div {
     max-width: 1296px;
     height: fit-content;
     margin-inline: auto;
+    width: 100%;
 
     display: flex;
     justify-content: space-between;
@@ -41,5 +45,10 @@ export const ContainerFooterDetail = styled.footer`
       font-size: 2rem;
       font-weight: 600;
     }
+  }
+  @media (min-width: 1500px) {
+    position: absolute;
+    bottom: 0;
+    margin-top: 20px;
   }
 `;

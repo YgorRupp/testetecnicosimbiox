@@ -14,6 +14,7 @@ interface iSearchParams {
 export const SearchPage = () => {
   const [moviesSearch, setMoviesSearch] = useState<Movie[]>([]);
   const [searchParams] = useSearchParams();
+  const [loading, setLoading] = useState<boolean>(true);
 
   const params: iSearchParams = {};
 
@@ -30,6 +31,8 @@ export const SearchPage = () => {
         setMoviesSearch(response.data.results);
       } catch (error) {
         console.error("Erro ao buscar filmes:", error);
+      } finally {
+        setLoading(false);
       }
     };
     searchMovies();
@@ -44,10 +47,10 @@ export const SearchPage = () => {
       </div>
       <main>
         <ul>
-          {moviesSearch.length > 0 ? (
-            moviesSearch.map((movie) => {
-              return <Card key={movie.id} movie={movie} />;
-            })
+          {loading ? (
+            <p>Carregando o resultado...</p>
+          ) : moviesSearch.length > 0 ? (
+            moviesSearch.map((movie) => <Card key={movie.id} movie={movie} />)
           ) : (
             <div className="containerNotFound">
               <p className="searchNotFound">Nenhum resultado encontrado</p>

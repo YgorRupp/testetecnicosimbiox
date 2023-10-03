@@ -18,24 +18,35 @@ export const Container = styled.div`
     color: white;
   }
   ul {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
+    display: flex;
+    /* grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px; */
+    gap: 20px;
 
     margin: 100px 0;
 
     max-width: 1296px;
     max-height: 100vh;
 
-    overflow-x: auto;
+    overflow-x: scroll;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  ul img {
+    width: 300px;
+    height: 350px;
   }
   ul::-webkit-scrollbar {
     width: 10px;
+    height: 5px;
   }
   ul::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 5px;
+  }
+
+  ul p {
+    color: white;
+    overflow: hidden;
   }
 
   .paginationButton {
@@ -67,10 +78,5 @@ export const Container = styled.div`
 
   .paginationButton p {
     color: white;
-  }
-  @media (min-width: 1200px) {
-    ul {
-      overflow-x: hidden;
-    }
   }
 `;

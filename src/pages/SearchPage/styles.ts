@@ -34,9 +34,9 @@ export const Container = styled.div`
   }
 
   ul {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
+    gap: 20px;
 
     margin: 100px 0;
 
@@ -46,8 +46,20 @@ export const Container = styled.div`
     overflow-x: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
+
+  ul img {
+    width: 300px;
+    height: 350px;
+  }
+
+  ul p {
+    color: white;
+    overflow: hidden;
+  }
+
   ul::-webkit-scrollbar {
     width: 10px;
+    height: 5px;
   }
   ul::-webkit-scrollbar-thumb {
     background-color: #888;
@@ -65,7 +77,7 @@ export const Container = styled.div`
 
   @media (min-width: 1200px) {
     ul {
-      overflow-x: hidden;
+      overflow-x: auto;
     }
   }
 `;

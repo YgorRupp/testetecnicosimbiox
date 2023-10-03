@@ -16,7 +16,7 @@ export const ContainerCard = styled.div`
   .containerImage img {
     width: 100%;
     height: 350px;
-    object-fit: scale-down; 
+    object-fit: scale-down;
   }
   .containerTitle {
     width: 100%;
@@ -35,7 +35,7 @@ export const ContainerCard = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
   .container {
@@ -50,5 +50,8 @@ export const ContainerCard = styled.div`
   p {
     color: var(--color-gray-300);
     margin-left: 10px;
+  }
+  .runtime {
+    margin-bottom: 20px;
   }
 `;
