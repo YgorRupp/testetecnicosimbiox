@@ -26,7 +26,7 @@ export const SearchPage = () => {
   useEffect(() => {
     const searchMovies = async () => {
       try {
-        const response = await api.get(`/movies${params.s}`);
+        const response = await api.get(`/movies/search/${params.s}`);
         setMoviesSearch(response.data.results);
       } catch (error) {
         console.error("Erro ao buscar filmes:", error);
