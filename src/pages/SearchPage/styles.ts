@@ -8,7 +8,7 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: center;
 
-    max-height: calc(100vh - 130px);
+    max-height: calc(100vh - 185px);
   }
 
   .searchResults {
